@@ -1,0 +1,30 @@
+<template>
+    <section class="ui raised segment">
+        <div class="ui two column grid ">
+            <div class="six wide column">
+                <aside class="six wide column">
+                    <img src="assets/images/tweet.jpg" class="ui medium image">
+                </aside>
+            </div>
+            <div class="ui form ten wide column">
+                <h5>Enter text here 140 characters max</h5>
+                <form submit.trigger="createTweet()" class="ui form four wide column stacked segment">
+                    <div class="field">
+                        <textarea maxlength="140" value.bind="text" placeholder="What's on your mind?"></textarea>
+                    </div>
+                    <div class="grouped inline fields">
+                        <h3 class="ui dividing header"> Select Sender </h3>
+                        <div class="field" repeat.for="sender of senders">
+                            <div class="ui radio checkbox">
+                                <input type="radio" model.bind="sender" checked.bind="selectedSender">
+                                <label>${sender.lastName}, ${sender.firstName}</label>
+                            </div>
+                        </div>
+                        <label class="ui circular label"> ${selectedSender.firstName} ${selectedSender.lastName}</label>
+                    </div>
+                    <button class="ui grey submit button"><i class="twitter icon"></i>Post</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</template>
