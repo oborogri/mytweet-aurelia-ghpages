@@ -1,23 +1,22 @@
+import {inject} from 'aurelia-framework';
+import TweetService from '../services/tweet-service';
+
+@inject(TweetService)
 export class Tweet {
 
-  senders= [
-    {
-      firstName: 'Homer',
-      lastName: 'Simpson'
-    },
-    {
-      firstName: 'Lisa',
-      lastName: 'Simpson'
-    },
-    {
-      firstName: 'Bart',
-      lastName: 'Simpson'
-    }
-  ];
-  selectSender=this.senders[0];
+  text = '';
+  senders = [];
+  selectedSender = '';
+
+  constructor(ts) {
+    this.tweetService = ts;
+    this.senders = ts.senders;
+    this.selectedSender = this.senders[0];
+  }
 
   createTweet() {
-    console.log(`New tweet from: ${this.selectedSender.firstName} ${this.selectedSender.lastName}`);
-    console.log(`Message: ${this.text}`);
+    this.tweetService.posttweet(this.selectedSender, this.text);
+    this.text = '';
+    this.selectedSender = '';
   }
 }
