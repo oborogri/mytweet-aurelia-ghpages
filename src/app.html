@@ -1,12 +1,18 @@
 <template>
 
-  <section class="ui two column stackable grid basic center aligned segment">
-    <aside class="column">
-      <compose view-model="./viewmodels/tweet"></compose>
-    </aside>
-    <article class="column">
-      <compose view-model="./viewmodels/timeline"></compose>
-    </article>
-  </section>
+  <div class="ui container">
+    <section class="ui two column stackable grid basic segment">
+      <div class="ui row">
+        <aside class="six wide column">
+          <compose view-model="./viewmodels/users/users"></compose>
+          <compose view-model="./viewmodels/tweet/tweet"></compose>
+        </aside>
+        <article class="ten wide column">
+          <compose view-model="./viewmodels/timeline/timeline"></compose>
+          <compose view-model="./viewmodels/friends/friends"></compose>
+        </article>
+      </div>
+    </section>
+  </div>
 
 </template>

@@ -1,0 +1,18 @@
+<template xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+    <div class="grouped inline fields">
+        <form submit.trigger="addFriend()" class="ui form ten wide column stacked segment">
+            <h3 class="ui dividing header"> Select to follow </h3>
+            <div class="field" repeat.for="sender of senders">
+                <div class="ui radio checkbox">
+                    <input type="radio" model.bind="sender" checked.bind="selectedFriend">
+                    <label>${sender.lastName}, ${sender.firstName}</label>
+                </div>
+            </div>
+            <label class="ui circular label"> ${selectedFriend.firstName} ${selectedFriend.lastName}</label>
+
+            <button class="ui grey submit button">Follow</button>
+        </form>
+    </div>
+
+</template>

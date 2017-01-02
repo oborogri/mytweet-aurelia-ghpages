@@ -1,0 +1,21 @@
+<template>
+
+    <article class="ui stacked segment">
+        <h3 class="ui dividing header">MyTweet timeline</h3>
+        <table class="ui celled table segment">
+            <thead>
+            <tr>
+                <th>Sender</th>
+                <th>Text</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr repeat.for="tweet of tweets">
+                <td> ${tweet.sender.firstName} ${tweet.sender.lastName}</td>
+                <td> ${tweet.text}</td>
+            </tr>
+            </tbody>
+        </table>
+    </article>
+
+</template>
