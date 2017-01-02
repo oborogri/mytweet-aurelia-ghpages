@@ -1,18 +1,26 @@
 <template>
 
   <div class="ui container">
-    <section class="ui two column stackable grid basic segment">
-      <div class="ui row">
-        <aside class="six wide column">
-          <compose view-model="./viewmodels/users/users"></compose>
-          <compose view-model="./viewmodels/tweet/tweet"></compose>
-        </aside>
-        <article class="ten wide column">
-          <compose view-model="./viewmodels/stats/stats"></compose>
-          <compose view-model="./viewmodels/timeline/timeline"></compose>
-          <compose view-model="./viewmodels/friends/friends"></compose>
-        </article>
-      </div>
+    <section class="ui stackable grid basic segment">
+        <div class="ui row">
+            <section class="ui raised segment">
+                <compose view="./viewmodels/login.html"></compose>
+            </section>
+        </div>
+        </section>
+      <section class="ui stackable grid raised segment">
+        <div class="ui row">
+            <aside class="six wide column">
+                <compose view-model="./viewmodels/tweet/tweet"></compose>
+            </aside>
+            <aside class="one wide column">
+                <compose view-model="./viewmodels/stats/stats"></compose>
+            </aside>
+              <article class="nine wide column">
+                  <compose view-model="./viewmodels/timeline/timeline"></compose>
+                  <compose view-model="./viewmodels/friends/friends"></compose>
+              </article>
+          </div>
     </section>
   </div>
 
