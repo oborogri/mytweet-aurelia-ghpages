@@ -4,14 +4,15 @@ import TweetService from '../../services/tweet-service';
 @inject(TweetService)
 export class Friend {
 
-  senders = [];
+  users = [];
   firstName = '';
   lastName = '';
+  password = '';
 
   constructor(ts) {
     this.tweetService = ts;
-    this.senders = ts.senders;
-    this.selectedFriend = this.senders[0];
+    this.users = ts.users;
+    this.selectedFriend = this.users[0];
   }
 
   addFriend() {

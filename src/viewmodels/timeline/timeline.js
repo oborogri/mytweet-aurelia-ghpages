@@ -8,6 +8,6 @@ export class Timeline {
 
   constructor(ts) {
     this.tweetService = ts;
-    this.tweets = this.tweetService.tweets;
+    this.tweets = ts.tweets;
   }
 }

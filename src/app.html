@@ -1,27 +1,31 @@
 <template>
 
-  <div class="ui container">
-    <section class="ui stackable grid basic segment">
-        <div class="ui row">
-            <section class="ui raised segment">
-                <compose view="./viewmodels/login.html"></compose>
-            </section>
-        </div>
+    <div class="ui container">
+        <nav class="ui inverted grey menu">
+            <header class="header item"><a href="/"> MyTweet </a></header>
+            <div class="right menu">
+                <div show.bind="loggedIn">
+                    <a id="logout" class= "item" click.trigger="logout()"> Logout</a>
+                </div>
+            </div>
+        </nav>
+            <div show.bind="!loggedIn" class="ui row">
+                    <compose view="./viewmodels/login/login.html"></compose>
+            </div>
+        <section class="ui stackable grid raised segment">
+            <div show.bind="loggedIn" class="ui row">
+                <aside class="six wide column">
+                    <compose view-model="./viewmodels/tweet/tweet"></compose>
+                </aside>
+                <aside class="one wide column">
+                    <compose view-model="./viewmodels/stats/stats"></compose>
+                </aside>
+                <article class="nine wide column">
+                    <compose view-model="./viewmodels/timeline/timeline"></compose>
+                    <compose view-model="./viewmodels/friends/friends"></compose>
+                </article>
+            </div>
         </section>
-      <section class="ui stackable grid raised segment">
-        <div class="ui row">
-            <aside class="six wide column">
-                <compose view-model="./viewmodels/tweet/tweet"></compose>
-            </aside>
-            <aside class="one wide column">
-                <compose view-model="./viewmodels/stats/stats"></compose>
-            </aside>
-              <article class="nine wide column">
-                  <compose view-model="./viewmodels/timeline/timeline"></compose>
-                  <compose view-model="./viewmodels/friends/friends"></compose>
-              </article>
-          </div>
-    </section>
-  </div>
+    </div>
 
 </template>

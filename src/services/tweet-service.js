@@ -7,17 +7,41 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 export default class TweetService {
 
   tweets = [];
-  senders = [];
+  users = [];
   friends = [];
   posts = 0;
+  loggedInUser = [];
 
   constructor(data, ea) {
     this.tweets = data.tweets;
-    this.senders = data.senders;
-    this.friends = data.senders;
+    this.users = data.users;
     this.ea = ea;
   }
 
+  //user authenticate handler
+  login(email, password) {
+    const status = {
+      success: false,
+      message: ''
+    };
+
+    if (this.users[email]) {
+      if (this.users[email].password === password) {
+        status.success = true;
+        status.message = 'logged in';
+        this.loggedInUser = this.users[email];
+        this.ea.publish(this.loggedInUser);
+      } else {
+        status.message = 'Incorrect password';
+      }
+    } else {
+      status.message = 'Unknown user';
+    }
+
+    return status;
+  }
+
+  //compose tweet handler
   posttweet(sender, text) {
     if (( sender && sender !== null) && ( text && text !== null)) {
       const tweet = {
@@ -35,18 +59,21 @@ export default class TweetService {
     }
   }
 
-  addUser(firstName, lastName) {
-    const user = {
+  //registering new user
+  register(firstName, lastName, email, password) {
+    const newUser = {
       firstName: firstName,
-      lastName: lastName
+      lastName: lastName,
+      email: email,
+      password: password
     };
-    this.senders.push(user);
+    this.users[email] = newUser;
   }
 
-  addFriend(sender) {
+  addFriend(selectedFriend) {
     const friend = {
-      firstName: sender.firstName,
-      lastName: sender.lastName
+      firstName: selectedFriend.firstName,
+      lastName: selectedFriend.lastName
     };
     console.log('Following: ' + friend.firstName + ' ' + friend.lastName);
   }

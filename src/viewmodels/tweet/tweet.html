@@ -1,17 +1,9 @@
 <template>
     <form submit.trigger="createTweet()" class="ui form ten wide column stacked segment">
-        <h3 class="ui dividing header">Enter text here 140 characters max</h3>
+        <h5 class="ui dividing header">Enter text here 140 characters max</h5>
         <div class="field">
             <textarea maxlength="140" value.bind="text" placeholder="What's on your mind?"></textarea>
         </div>
-        <div class="grouped inline fields">
-            <h3 class="ui dividing header"> Select from </h3>
-            <select value.bind="selectedSender">
-                <option value="">From</option>
-                <option repeat.for="sender of senders" model.bind="sender">${sender.firstName} ${sender.lastName}</option>
-            </select>
-            </div>
-            <label class="ui circular label"> ${selectedSender.firstName} ${selectedSender.lastName}</label>
         <button class="ui grey submit button"><i class="twitter icon"></i>Post</button>
     </form>
 </template>

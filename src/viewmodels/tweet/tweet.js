@@ -5,18 +5,15 @@ import TweetService from '../../services/tweet-service';
 export class Tweet {
 
   text = '';
-  senders = [];
-  selectedSender = '';
+  sender = [];
 
   constructor(ts) {
     this.tweetService = ts;
-    this.senders = ts.senders;
-    this.selectedSender = this.senders[0];
+    this.sender = ts.loggedInUser;
   }
 
   createTweet() {
-    this.tweetService.posttweet(this.selectedSender, this.text);
+    this.tweetService.posttweet(this.sender, this.text);
     this.text = '';
-    this.selectedSender = '';
   }
 }
