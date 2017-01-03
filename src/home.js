@@ -10,9 +10,10 @@ export class Home {
   configureRouter(config, router) {
     config.map([
       { route: ['', 'home'], name: 'tweet', moduleId: 'viewmodels/tweet/tweet', nav: true, title: 'Tweet' },
-      { route: 'report', name: 'timeline', moduleId: 'viewmodels/timeline/timeline', nav: true, title: 'Timeline' },
-      { route: 'friends', name: 'friends', moduleId: 'viewmodels/friends/friends', nav: true, title: 'Friends' },
+      { route: 'timeline', name: 'timeline', moduleId: 'viewmodels/timeline/timeline', nav: true, title: 'Timeline' },
+      { route: 'friends', name: 'friends', moduleId: 'viewmodels/friends/friends', nav: true, title: 'Users' },
       { route: 'stats', name: 'stats', moduleId: 'viewmodels/stats/stats', nav: true, title: 'Stats' },
+      { route: 'dashboard', name: 'dashboard', moduleId: 'viewmodels/dashboard/dashboard', nav: true, title: 'Dashboard' },
       { route: 'logout', name: 'logout', moduleId: 'viewmodels/logout/logout', nav: true, title: 'Logout' }
     ]);
     this.router = router;

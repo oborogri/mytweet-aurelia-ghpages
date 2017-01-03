@@ -4,18 +4,21 @@ import TweetService from '../../services/tweet-service';
 @inject(TweetService)
 export class Friend {
 
-  users = [];
-  firstName = '';
-  lastName = '';
-  password = '';
+  tweets = [];
 
   constructor(ts) {
     this.tweetService = ts;
-    this.users = ts.users;
-    this.selectedFriend = this.users[0];
-  }
+    this.tweets = ts.tweets;
+    let membersTweet = [];
 
-  addFriend() {
-    this.tweetService.addFriend(this.selectedFriend);
+    this.tweets.forEach(tweet => {
+      if (membersTweet.indexOf(tweet) === -1) {
+        membersTweet.push(tweet);
+      }
+      return membersTweet;
+    });
   }
 }
+  /*addFriend() {
+   this.tweetService.addFriend(this.selectedFriend);
+   }*/

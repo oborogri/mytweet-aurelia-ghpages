@@ -1,15 +1,19 @@
-<template xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-
-    <div class="grouped inline fields">
-        <form submit.trigger="addFriend()" class="ui form ten wide column stacked segment">
-            <!--<h4 class="ui dividing header"> Follow </h4>
-            <select model.bind="selectedFriend">
-                <option value="">Follow</option>
-                <option repeat.for="user of users" model.bind="user">${user.firstName} ${user.lastName}</option>
-            </select>
-            <label class="ui circular label"> ${selectedFriend.firstName} ${selectedFriend.lastName}</label>-->
-            <button class="ui grey submit button">Follow</button>
-        </form>
-    </div>
-
+<template>
+    <article class="ui stacked segment">
+    <h4 class="ui dividing header">MyTweet users</h4>
+    <table class="ui celled table segment">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr repeat.for="tweet of membersTweet">
+            <td> ${tweet.sender.firstName}</td>
+            <td> ${tweet.sender.email}</td>
+        </tr>
+        </tbody>
+    </table>
+    </article>
 </template>

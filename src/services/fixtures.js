@@ -27,14 +27,5 @@ export default class Fixtures {
     }
   }
 
-  tweets = [
-    {
-      text: 'Hi from Homer',
-      sender: []
-    },
-    {
-      text: 'Hi from Bart',
-      sender: []
-    }
-  ];
+  tweets = [];
 }
