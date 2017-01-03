@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
 import Fixtures from './fixtures';
-import {PostsUpdate} from './messages';
+import {PostsUpdate, LoginStatus} from './messages';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
 @inject(Fixtures, EventAggregator)
@@ -8,7 +8,6 @@ export default class TweetService {
 
   tweets = [];
   users = [];
-  friends = [];
   posts = 0;
   loggedInUser = [];
 
@@ -16,29 +15,6 @@ export default class TweetService {
     this.tweets = data.tweets;
     this.users = data.users;
     this.ea = ea;
-  }
-
-  //user authenticate handler
-  login(email, password) {
-    const status = {
-      success: false,
-      message: ''
-    };
-
-    if (this.users[email]) {
-      if (this.users[email].password === password) {
-        status.success = true;
-        status.message = 'logged in';
-        this.loggedInUser = this.users[email];
-        this.ea.publish(this.loggedInUser);
-      } else {
-        status.message = 'Incorrect password';
-      }
-    } else {
-      status.message = 'Unknown user';
-    }
-
-    return status;
   }
 
   //compose tweet handler
@@ -59,6 +35,15 @@ export default class TweetService {
     }
   }
 
+  //follow a user
+  addFriend(selectedFriend) {
+    const friend = {
+      firstName: selectedFriend.firstName,
+      lastName: selectedFriend.lastName
+    };
+    console.log('Following: ' + friend.firstName + ' ' + friend.lastName);
+  }
+
   //registering new user
   register(firstName, lastName, email, password) {
     const newUser = {
@@ -68,13 +53,40 @@ export default class TweetService {
       password: password
     };
     this.users[email] = newUser;
+    this.firstName = '';
+    this.lastName = '';
+    this.email = '';
+    this.password = '';
   }
 
-  addFriend(selectedFriend) {
-    const friend = {
-      firstName: selectedFriend.firstName,
-      lastName: selectedFriend.lastName
+  //user authenticate handler
+  login(email, password) {
+    const status = {
+      success: false,
+      message: ''
     };
-    console.log('Following: ' + friend.firstName + ' ' + friend.lastName);
+
+    if (this.users[email]) {
+      if (this.users[email].password === password) {
+        status.success = true;
+        status.message = 'logged in';
+        this.loggedInUser = this.users[email];
+      } else {
+        status.message = 'Incorrect password';
+      }
+    } else {
+      status.message = 'Unknown user';
+    }
+
+    this.ea.publish(new LoginStatus(status));
+  }
+
+  //log out function
+  logout() {
+    const status = {
+      success: false,
+      message: ''
+    };
+    this.ea.publish(new LoginStatus(new LoginStatus(status)));
   }
 }

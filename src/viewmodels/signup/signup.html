@@ -1,0 +1,46 @@
+<template>
+    <section class="ui stacked segment">
+        <div class="ui three column grid">
+            <div class="ui four wide column">
+                <img src="../../../../assets/images/welcome.jpg" class="ui medium image">
+            </div>
+            <div class="ui six wide column">
+                <h2> Welcome to MyTweet</h2>
+                <p> Connect with your friends — and other fascinating people.<br>
+                    Get in-the-moment updates on the things that interest you.<br>
+                    And watch events unfold, in real time, from every angle.
+                </p>
+                <p>
+                    You need to create an account to use our Services.<br>
+                    You are responsible for safeguarding your account, so use a strong password and limit its use to this account.
+                </p>
+                <button class="ui basic grey tiny button" id="signin" click.trigger="signin()">
+                    <i class="sign in icon"></i>Sign in</button>
+            </div>
+            <div class="ui six wide column fluid form">
+                    <form submit.delegate="register($event)" class="ui stacked segment form">
+                        <h5 class="ui dividing header">Register</h5>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>First Name</label>
+                                <input placeholder="First Name" type="text" value.bind="firstName">
+                            </div>
+                            <div class="field">
+                                <label>Last Name</label>
+                                <input placeholder="Last Name" type="text" value.bind="lastName">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <input placeholder="Email" type="text" value.bind="email">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" value.bind="password">
+                        </div>
+                        <button class="ui tiny grey submit button"><i class="add user icon"></i>Submit</button>
+                    </form>
+                </div>
+            </div>
+    </section>
+</template>

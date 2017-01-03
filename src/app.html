@@ -9,9 +9,16 @@
                 </div>
             </div>
         </nav>
-            <div show.bind="!loggedIn" class="ui row">
-                    <compose view="./viewmodels/login/login.html"></compose>
+        <div show.bind="!loggedIn" class="ui row">
+            <div show.bind="registered" class="ui row">
+                <compose view-model="./viewmodels/login/login"></compose>
             </div>
+        </div>
+        <div show.bind="!loggedIn" class="ui row">
+            <div show.bind="!registered" class="ui row">
+                <compose view-model="./viewmodels/signup/signup"></compose>
+            </div>
+        </div>
         <section class="ui stackable grid raised segment">
             <div show.bind="loggedIn" class="ui row">
                 <aside class="six wide column">

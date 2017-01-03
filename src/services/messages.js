@@ -3,3 +3,9 @@ export class PostsUpdate {
     this.posts = posts;
   }
 }
+
+export class LoginStatus {
+  constructor(status) {
+    this.status = status;
+  }
+}
